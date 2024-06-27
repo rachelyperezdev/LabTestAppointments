@@ -6,5 +6,7 @@ namespace LabTestAppointments.Data.Entities
     {
         public string Plan { get; set; }
         public int InsuranceProviderId { get; set; }
+
+        public InsuranceProvider? InsuranceProvider { get; set; }
     }
 }
