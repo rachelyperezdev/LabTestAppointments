@@ -7,7 +7,9 @@ namespace LabTestAppointments.Data.Contexts
     {
         public LabTestAppointmentsContext(DbContextOptions<LabTestAppointmentsContext> options) : base(options)
         {
-            
+           
         }
+
+        DbSet<Bioanalyst> Bioanalysts { get; set; }
     }
 }
