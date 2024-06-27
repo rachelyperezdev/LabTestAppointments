@@ -9,7 +9,6 @@ namespace LabTestAppointments.Data.Contexts
         {
             
         }
-
         DbSet<HealthInsurance> HealthInsurances { get; set; }
     }
 }
