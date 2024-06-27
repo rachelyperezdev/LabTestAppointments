@@ -9,5 +9,6 @@ namespace LabTestAppointments.Data.Contexts
         {
             
         }
+        DbSet<LabTest> LabTests { get; set; }
     }
 }
