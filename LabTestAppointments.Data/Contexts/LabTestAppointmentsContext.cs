@@ -9,5 +9,7 @@ namespace LabTestAppointments.Data.Contexts
         {
             
         }
+        DbSet<MedicalImage> MedicalImages { get; set; }
+
     }
 }
