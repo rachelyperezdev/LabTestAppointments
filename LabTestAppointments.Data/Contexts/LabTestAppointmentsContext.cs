@@ -12,5 +12,7 @@ namespace LabTestAppointments.Data.Contexts
         DbSet<LabTest> LabTests { get; set; }
         DbSet<MedicalImage> MedicalImages { get; set; }
         DbSet<Bioanalyst> Bioanalyst { get; set; }
+        DbSet<InsuranceProvider> InsuranceProviders { get; set; }
+
     }
 }
