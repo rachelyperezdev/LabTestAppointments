@@ -9,7 +9,5 @@ namespace LabTestAppointments.Data.Contexts
         {
            
         }
-
-        DbSet<Bioanalyst> Bioanalysts { get; set; }
     }
 }
