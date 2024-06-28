@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Exceptions\LabTest\" />
-    <Folder Include="Repositories\Db\Generic\" />
+    <Folder Include="Interfaces\Repositories\Generic\" />
+    <Folder Include="Repositories\Db\" />
   </ItemGroup>
 
 </Project>
