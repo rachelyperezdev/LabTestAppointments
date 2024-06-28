@@ -1,0 +1,50 @@
+﻿@using LabTestAppointments.Data.Entities;
+
+@model IEnumerable<LabTestAppointments.Data.Entities.MedicalImage>
+
+@{
+    ViewData["Title"] = "Imágenes médicas";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="row">
+            <div class="col-9">
+                <h1 class="display-4">Imágenes Médicas</h1>
+            </div>
+            <div class="col-3">
+                <p><a asp-controller="MedicalImage" asp-action="Create">Agregar</a></p>
+            </div>
+        </div>
+        <div class="col-12 mt-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int counter = 1;
+                    }
+                    @foreach (LabTestAppointments.Data.Entities.MedicalImage medicalImage in Model)
+                    {
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@medicalImage.Name</td>
+                            <td>@medicalImage.Description</td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = medicalImage.Id })
+                                @Html.ActionLink("Detalles", "Details", new { id = medicalImage.Id })
+                            </td>
+                        </tr>
+                        counter++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
