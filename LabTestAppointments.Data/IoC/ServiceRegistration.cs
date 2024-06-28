@@ -20,6 +20,7 @@ namespace LabTestAppointments.Data.IoC
             services.AddScoped(typeof(IGenericRepository<>), typeof(MockGenericRepository<>));
             services.AddScoped<IMedicalImageRepository, MockMedicalImageRepository>();
             services.AddScoped<IBioanalystRepository, MockBioanalystRepository>();
+            services.AddScoped<IInsuranceProviderRepository, MockInsuranceProviderRepository>();
             #endregion
 
         }
