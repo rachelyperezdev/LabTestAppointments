@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Exceptions\LabTest\" />
-    <Folder Include="Exceptions\MedicalImage\" />
     <Folder Include="Repositories\Db\Generic\" />
   </ItemGroup>
 
