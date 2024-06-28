@@ -15,5 +15,29 @@ namespace LabTestAppointments.Web.Controllers
         {
             return View(await _bioanalystRepository.GetAllAsync());
         }
+
+        public async Task<IActionResult> Create()
+        {
+            Bioanalyst bioanalyst = new Bioanalyst();
+            return View(bioanalyst);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Bioanalyst bioanalyst)
+        {
+            try
+            {
+                bioanalyst.CreatedBy = "DefaultUser";
+                bioanalyst.CreatedOn = DateTime.Now;
+
+                await _bioanalystRepository.AddAsync(bioanalyst);
+
+                return RedirectToRoute(new { controller = "Bioanalyst", action = "Index" });
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+        }
     }
 }
