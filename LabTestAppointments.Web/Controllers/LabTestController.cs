@@ -43,5 +43,28 @@ namespace LabTestAppointments.Web.Controllers
                 return View();
             }
         }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            return View(await _labTestRepository.GetByIdAsync(id));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(LabTest labTest)
+        {
+            try
+            {
+                labTest.ModifiedBy = "DefaultUser";
+                labTest.ModifiedOn = DateTime.Now;
+
+                await _labTestRepository.UpdateAsync(labTest, labTest.Id);
+
+                return RedirectToRoute(new { controller = "LabTest", action = "Index" });
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+        }
     }
 }
