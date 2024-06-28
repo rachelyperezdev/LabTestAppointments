@@ -14,6 +14,8 @@
     <Folder Include="Interfaces\Repositories\Generic\" />
     <Folder Include="Repositories\Db\" />
     <Folder Include="Repositories\Mocks\" />
+    <Folder Include="Exceptions\LabTest\" />
+    <Folder Include="Repositories\Db\Generic\" />
   </ItemGroup>
 
 </Project>
