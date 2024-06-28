@@ -1,5 +1,7 @@
 ﻿using LabTestAppointments.Data.Contexts;
+using LabTestAppointments.Data.Interfaces.Repositories;
 using LabTestAppointments.Data.Interfaces.Repositories.Generic;
+using LabTestAppointments.Data.Repositories.Mocks;
 using LabTestAppointments.Data.Repositories.Mocks.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,11 @@ namespace LabTestAppointments.Data.IoC
 
             #region Services
             services.AddScoped(typeof(IGenericRepository<>), typeof(MockGenericRepository<>));
+            services.AddScoped<ILabTestRepository, MockLabTestRepository>();
+            services.AddScoped<IMedicalImageRepository, MockMedicalImageRepository>();
+            services.AddScoped<IBioanalystRepository, MockBioanalystRepository>();
+            services.AddScoped<IInsuranceProviderRepository, MockInsuranceProviderRepository>();
+            services.AddScoped<IHealthInsuranceRepository, MockHealthInsuranceRepository>();
             #endregion
 
         }
