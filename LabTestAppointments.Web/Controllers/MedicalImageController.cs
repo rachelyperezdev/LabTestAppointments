@@ -22,6 +22,28 @@ namespace LabTestAppointments.Web.Controllers
         {
             return View(await _medicalImageRepository.GetByIdAsync(id));
         }
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Create(MedicalImage medicalImage)
+        {
+            try
+            {
+                medicalImage.CreatedBy = "DefaultUser";
+                medicalImage.CreatedOn = DateTime.Now;
+
+                await _medicalImageRepository.AddAsync(medicalImage);
+
+                return RedirectToRoute(new { controller = "MedicalImage", action = "Index" });
+
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+        }
     }
 }
