@@ -54,6 +54,8 @@ namespace LabTestAppointments.Web.Controllers
         {
             try
             {
+                bioanalyst.CreatedBy = "DefaultUser";
+                bioanalyst.CreatedOn = DateTime.Now;
                 bioanalyst.ModifiedBy = "DefaultUser";
                 bioanalyst.ModifiedOn = DateTime.Now;
 

@@ -57,6 +57,8 @@ namespace LabTestAppointments.Web.Controllers
             {
                 medicalImage.CreatedBy = "DefaultUser";
                 medicalImage.CreatedOn = DateTime.Now;
+                medicalImage.ModifiedBy = "DefaultUser";
+                medicalImage.ModifiedOn = DateTime.Now;
 
                 await _medicalImageRepository.UpdateAsync(medicalImage, medicalImage.Id);
 
