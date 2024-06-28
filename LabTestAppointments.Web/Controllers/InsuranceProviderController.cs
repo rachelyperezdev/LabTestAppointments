@@ -15,5 +15,9 @@ namespace LabTestAppointments.Web.Controllers
         {
             return View(await _insuranceProviderRepository.GetAllAsync());
         }
+        public async Task<IActionResult> Details(int id)
+        {
+            return View(await _insuranceProviderRepository.GetByIdAsync(id));
+        }
     }
 }
