@@ -22,5 +22,31 @@ namespace LabTestAppointments.Web.Controllers
         {
             return View(await _healthInsuranceRepository.GetByIdWithIncludeAsync(id, new List<string>() { "InsuranceProvider" }));
         }
+
+        public async Task<IActionResult> Create()
+        {
+            HealthInsurance healthInsurance = new HealthInsurance();
+            ViewBag.InsuranceProviders = await _healthInsuranceRepository.GetAllWithIncludeAsync(new List<string>() { "InsuranceProvider" });
+
+            return View(healthInsurance);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(HealthInsurance healthInsurance)
+        {
+            try
+            {
+                healthInsurance.CreatedBy = "DefaultUser";
+                healthInsurance.CreatedOn = DateTime.Now;
+
+                await _healthInsuranceRepository.AddAsync(healthInsurance);
+
+                return RedirectToRoute(new { controller = "HealthInsurance", action = "Index" });
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+        }
     }
 }
