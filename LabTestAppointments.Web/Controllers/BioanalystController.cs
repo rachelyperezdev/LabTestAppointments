@@ -16,6 +16,11 @@ namespace LabTestAppointments.Web.Controllers
             return View(await _bioanalystRepository.GetAllAsync());
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            return View(await _bioanalystRepository.GetByIdAsync(id));
+        }
+
         public async Task<IActionResult> Create()
         {
             Bioanalyst bioanalyst = new Bioanalyst();
