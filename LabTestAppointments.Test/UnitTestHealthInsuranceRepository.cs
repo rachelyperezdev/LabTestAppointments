@@ -286,7 +286,7 @@ namespace LabTestAppointments.Test
             MockInsuranceProviderRepository ipRepository = new MockInsuranceProviderRepository(context);
             MockHealthInsuranceRepository repository = new MockHealthInsuranceRepository(context);
 
-            // Test data //
+            // Test Data //
             var insuranceProvider = new InsuranceProvider
             {
                 Id = 1,
