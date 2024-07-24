@@ -1,0 +1,49 @@
+﻿@using LabTestAppointments.Data.Entities﻿
+@model IEnumerable<LabTestAppointments.Data.Entities.HealthInsurance>
+
+@{
+    ViewData["Title"] = "Seguros médicos";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="row">
+            <div class="col-9">
+                <h1 class="display-4">Seguros médicos</h1>
+            </div>
+            <div class="col-3">
+                <p><a asp-controller="HealthInsurance" asp-action="Create">Agregar</a></p>
+            </div>
+        </div>
+        <div class="col-12 mt-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Plan</th>
+                        <th scope="col">Aseguradora</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int counter = 1;
+                    }
+                    @foreach (LabTestAppointments.Data.Entities.HealthInsurance healthInsurance in Model)
+                    {
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@healthInsurance.Plan</td>
+                            <td>@healthInsurance.InsuranceProvider.Name</td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = healthInsurance.Id })
+                                @Html.ActionLink("Detalles", "Details", new { id = healthInsurance.Id })
+                            </td>
+                        </tr>
+                        counter++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
