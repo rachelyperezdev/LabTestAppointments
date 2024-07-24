@@ -207,7 +207,7 @@ namespace LabTestAppointments.Test
 
             // Assert //
             Assert.NotNull(result);
-            Assert.Equal(5, result.Count);
+            Assert.Equal(10, result.Count);
 
             var insuranceProviders = result.ToList();
             Assert.Equal("BMI", insuranceProviders[0].Name);
