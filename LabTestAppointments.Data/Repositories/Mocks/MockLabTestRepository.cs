@@ -27,6 +27,8 @@ namespace LabTestAppointments.Data.Repositories.Mocks
                 throw new LabTestAlreadyExistsException("La prueba de laboratorio ingresada ya existe.");
             }
 
+            ValidateLabTest(entity);
+
             LabTest labTestToAdd = new()
             {
                 Id = entity.Id,
@@ -75,6 +77,8 @@ namespace LabTestAppointments.Data.Repositories.Mocks
             {
                 throw new LabTestNotFoundException("La prueba de laboratorio a actualizar no fue encontrada.");
             }
+
+            ValidateLabTest(entity);
 
             await base.UpdateAsync(entity, id);
         }
@@ -195,6 +199,19 @@ namespace LabTestAppointments.Data.Repositories.Mocks
         private bool IsNull(LabTest labTest)
         {
             return labTest == null ? true : false;
+        }
+
+        private void ValidateLabTest(LabTest labTest)
+        {
+            if (string.IsNullOrEmpty(labTest.Name))
+            {
+                throw new LabTestMissingPropertiesException("Debe ingresar el nombre de la prueba de laboratorio.");
+            }
+
+            if (string.IsNullOrEmpty(labTest.Description))
+            {
+                throw new LabTestMissingPropertiesException("Debe ingresar la descripción de la prueba de laboratorio.");
+            }
         }
         #endregion
     }
