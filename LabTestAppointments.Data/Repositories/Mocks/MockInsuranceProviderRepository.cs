@@ -27,6 +27,8 @@ namespace LabTestAppointments.Data.Repositories.Mocks
                 throw new InsuranceProviderAlreadyExistsException("El proveedor de seguros ingresado ya existe.");
             }
 
+            ValidateInsuranceProvider(entity);
+
             InsuranceProvider insuranceProviderToAdd = new()
             {
                 Id = entity.Id,
@@ -75,6 +77,8 @@ namespace LabTestAppointments.Data.Repositories.Mocks
             {
                 throw new InsuranceProviderNotFoundException("El proveedor de seguros a actualizar no fue encontrado.");
             }
+
+            ValidateInsuranceProvider(entity);
 
             await base.UpdateAsync(entity, id);
         }
@@ -134,6 +138,18 @@ namespace LabTestAppointments.Data.Repositories.Mocks
         private bool IsNull(InsuranceProvider insuranceProvider)
         {
             return insuranceProvider == null ? true : false;
+        }
+        private void ValidateInsuranceProvider(InsuranceProvider insuranceProvider)
+        {
+            if (string.IsNullOrEmpty(insuranceProvider.Name))
+            {
+                throw new InsuranceProviderMissingPropertiesException("Debe ingresar el nombre del proveedor de seguros.");
+            }
+
+            if (string.IsNullOrEmpty(insuranceProvider.Phone))
+            {
+                throw new InsuranceProviderMissingPropertiesException("Debe ingresar el número telefónico del proveedor de seguros.");
+            }
         }
         #endregion
     }

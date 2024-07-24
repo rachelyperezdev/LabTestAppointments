@@ -27,6 +27,8 @@ namespace LabTestAppointments.Data.Repositories.Mocks
                 throw new MedicalImageAlreadyExistsException("La imagen médica ingresada ya existe.");
             }
 
+            ValidateMedicalImage(medicalImage);
+
             MedicalImage medicalImageToAdd = new()
             {
                 Id = medicalImage.Id,
@@ -73,8 +75,10 @@ namespace LabTestAppointments.Data.Repositories.Mocks
 
             if (medicalImageToUpdate is null)
             {
-                throw new MedicalImageNotFoundException("La iamgen médica a actualizar no fue encontrada.");
+                throw new MedicalImageNotFoundException("La imagen médica a actualizar no fue encontrada.");
             }
+
+            ValidateMedicalImage(medicalImage);
 
             await base.UpdateAsync(medicalImage, id);
         }
@@ -190,6 +194,19 @@ namespace LabTestAppointments.Data.Repositories.Mocks
         private bool IsNull(MedicalImage medicalImage)
         {
             return medicalImage == null ? true : false;
+        }
+
+        private void ValidateMedicalImage(MedicalImage medicalImage)
+        {
+            if (string.IsNullOrEmpty(medicalImage.Name))
+            {
+                throw new MedicalImageMissingPropertiesException("Debe ingresar el nombre de la imagen médica.");
+            }
+
+            if (string.IsNullOrEmpty(medicalImage.Description))
+            {
+                throw new MedicalImageMissingPropertiesException("Debe ingresar la descripción de la imagen médica.");
+            }
         }
         #endregion
     }
