@@ -35,7 +35,3 @@ Global
 		SolutionGuid = {E5780BAD-3635-4FE8-B75C-AE9C3A1B3C27}
 	EndGlobalSection
 EndGlobal
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E5780BAD-3635-4FE8-B75C-AE9C3A1B3C27}
-	EndGlobalSection
-EndGlobal
