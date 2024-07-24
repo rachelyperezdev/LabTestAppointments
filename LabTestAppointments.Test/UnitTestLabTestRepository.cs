@@ -4,7 +4,7 @@ using LabTestAppointments.Data.Exceptions.LabTest;
 using LabTestAppointments.Data.Repositories.Mocks;
 using Microsoft.EntityFrameworkCore;
 
-namespace LabTestAppointment.Test
+namespace LabTestAppointments.Test
 {
     public class UnitTestLabTestRepository
     {
