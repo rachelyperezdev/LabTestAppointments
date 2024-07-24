@@ -96,7 +96,7 @@ namespace LabTestAppointments.Test
                 Phone = string.Empty
             };
 
-            string descMessage = "Debe ingresar el número telefónico del proveedor de seguros.";
+            string descMessage = "Debe ingresar el numero telefonico del proveedor de seguros.";
 
             // Assert //
             var missingRequiredPropsInsuranceProviderExcep = await Assert.ThrowsAsync<InsuranceProviderMissingPropertiesException>(async () => await repository.AddAsync(insuranceProvider));
