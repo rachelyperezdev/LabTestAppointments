@@ -27,6 +27,8 @@ namespace LabTestAppointments.Data.Repositories.Mocks
                 throw new BioanalystAlreadyExistsException("El bioanalista ingresado ya existe.");
             }
 
+            ValidateBioanalyst(entity);
+
             Bioanalyst BioanalystToAdd = new()
             {
                 Id = entity.Id,
@@ -66,7 +68,7 @@ namespace LabTestAppointments.Data.Repositories.Mocks
         {
             if (IsNull(entity))
             {
-                throw new BioanalystNullException("El bioanalista es requerido, no puede ser nulp.");
+                throw new BioanalystNullException("El bioanalista es requerido, no puede ser nulo.");
             }
 
             var BioanalystToUpdate = await GetByIdAsync(entity.Id);
@@ -75,6 +77,8 @@ namespace LabTestAppointments.Data.Repositories.Mocks
             {
                 throw new BioanalystNotFoundException("El bioanalista a actualizar no fue encontrado.");
             }
+
+            ValidateBioanalyst(entity);
 
             await base.UpdateAsync(entity, id);
         }
@@ -134,6 +138,19 @@ namespace LabTestAppointments.Data.Repositories.Mocks
         private bool IsNull(Bioanalyst Bioanalyst)
         {
             return Bioanalyst == null ? true : false;
+        }
+
+        private void ValidateBioanalyst(Bioanalyst bioanalyst)
+        {
+            if (string.IsNullOrEmpty(bioanalyst.FirstName))
+            {
+                throw new BioanalystMissingPropertiesException("Debe ingresar el nombre del bioanalista.");
+            }
+
+            if (string.IsNullOrEmpty(bioanalyst.LastName))
+            {
+                throw new BioanalystMissingPropertiesException("Debe ingresar el apellido del bioanalista.");
+            }
         }
         #endregion
     }
