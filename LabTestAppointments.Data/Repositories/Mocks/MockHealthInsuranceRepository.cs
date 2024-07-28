@@ -28,6 +28,8 @@ namespace LabTestAppointments.Data.Repositories.Mocks
                 throw new HealthInsuranceAlreadyExistsException("El seguro médico ingresado ya existe.");
             }
 
+            ValidateHealthInsurance(entity);
+
             HealthInsurance healthInsuranceProviderToAdd = new()
             {
                 Id = entity.Id,
@@ -104,6 +106,8 @@ namespace LabTestAppointments.Data.Repositories.Mocks
                 throw new HealthInsuranceNotFoundException("El seguro médico a actualizar no fue encontrado.");
             }
 
+            ValidateHealthInsurance(entity);
+
             await base.UpdateAsync(entity, id);
         }
 
@@ -162,6 +166,19 @@ namespace LabTestAppointments.Data.Repositories.Mocks
         private bool IsNull(HealthInsurance healthInsurance)
         {
             return healthInsurance == null ? true : false;
+        }
+
+        private void ValidateHealthInsurance(HealthInsurance healthInsurance)
+        {
+            if (string.IsNullOrEmpty(healthInsurance.Plan))
+            {
+                throw new HealthInsuranceMissingPropertiesException("Debe ingresar el plan del seguro médico.");
+            }
+
+            if (healthInsurance.InsuranceProviderId < 0)
+            {
+                throw new HealthInsuranceMissingPropertiesException("Debe ingresar el id del proveedor del seguro médico y debe ser 0 o mayor.");
+            }
         }
         #endregion
     }
