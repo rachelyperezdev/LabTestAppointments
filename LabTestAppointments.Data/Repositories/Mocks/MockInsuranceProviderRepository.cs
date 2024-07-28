@@ -148,7 +148,7 @@ namespace LabTestAppointments.Data.Repositories.Mocks
 
             if (string.IsNullOrEmpty(insuranceProvider.Phone))
             {
-                throw new InsuranceProviderMissingPropertiesException("Debe ingresar el número telefónico del proveedor de seguros.");
+                throw new InsuranceProviderMissingPropertiesException("Debe ingresar el numero telefonico del proveedor de seguros.");
             }
         }
         #endregion
